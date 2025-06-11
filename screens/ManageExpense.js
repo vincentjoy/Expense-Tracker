@@ -4,6 +4,7 @@ import IconButton from "../components/UI/IconButton";
 import { GlobalStyles } from "../constants/styles";
 import Button from "../components/UI/Button"
 import { ExpensesContext } from "../store/expenses-context";
+import ExpenseForm from "../components/ManageExpense/ExpenseForm";
 
 function ManageExpense({ route, navigation }) { // We get navigation componenet here, because this is a screen component
 
@@ -37,6 +38,7 @@ function ManageExpense({ route, navigation }) { // We get navigation componenet 
 
     return (
         <View style={styles.container}>
+            <ExpenseForm />
             <View style={styles.buttonsContainer}>
                 <Button style={styles.button} mode="flat" onPress={cancelHandler}>Cancel</Button>
                 <Button style={styles.button} onPress={confirmHandler}>{isEditing ? 'Update' : 'Add'}</Button>

@@ -10,7 +10,7 @@ function RecentExpenses() {
         const date7DaysAgo = getDateMinusDays(today, 7)
         return (expense.date > date7DaysAgo) && (expense.date <= today)
     })
-    return <ExpensesOutput recentExpenses={recentExpenses} expensesPeriod='Last 7 days' fallbackText="No expenses registered for the last 7 days" />
+    return <ExpensesOutput expenses={recentExpenses} expensesPeriod='Last 7 days' fallbackText="No expenses registered for the last 7 days" />
 }
 
 export default RecentExpenses;
