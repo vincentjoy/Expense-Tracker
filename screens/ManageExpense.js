@@ -1,54 +1,61 @@
-import { useContext, useLayoutEffect } from "react";
-import { View, StyleSheet } from "react-native";
-import IconButton from "../components/UI/IconButton";
-import { GlobalStyles } from "../constants/styles";
-import Button from "../components/UI/Button"
-import { ExpensesContext } from "../store/expenses-context";
-import ExpenseForm from "../components/ManageExpense/ExpenseForm";
+import { useContext, useLayoutEffect } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
 
-function ManageExpense({ route, navigation }) { // We get navigation componenet here, because this is a screen component
+import ExpenseForm from '../components/ManageExpense/ExpenseForm';
+import Button from '../components/UI/Button';
+import IconButton from '../components/UI/IconButton';
+import { GlobalStyles } from '../constants/styles';
+import { ExpensesContext } from '../store/expenses-context';
 
-    const expenseCtx =  useContext(ExpensesContext)
-    const editedExpenseId = route.params?.expenseId
-    const isEditing = !!editedExpenseId
+function ManageExpense({ route, navigation }) {
+    const expensesCtx = useContext(ExpensesContext);
+
+    const editedExpenseId = route.params?.expenseId;
+    const isEditing = !!editedExpenseId;
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: isEditing ? 'Edit Expense' : 'Add Expense'
-        })
-    }, [navigation, isEditing])
+            title: isEditing ? 'Edit Expense' : 'Add Expense',
+        });
+    }, [navigation, isEditing]);
 
     function deleteExpenseHandler() {
-        expenseCtx.deleteExpense(editedExpenseId)
-        navigation.goBack()
+        expensesCtx.deleteExpense(editedExpenseId);
+        navigation.goBack();
     }
 
     function cancelHandler() {
-        navigation.goBack()
+        navigation.goBack();
     }
 
-    function confirmHandler() {
+    function confirmHandler(expenseData) {
         if (isEditing) {
-            expenseCtx.updateExpense(editedExpenseId, {description: 'Test Update', amount: 24.3, date: new Date('2025-05-19')})
+            expensesCtx.updateExpense(editedExpenseId, expenseData);
         } else {
-            expenseCtx.addExpense({description: 'Test Add', amount: 16.9, date: new Date('2025-06-11')})
+            expensesCtx.addExpense(expenseData);
         }
-        navigation.goBack()
+        navigation.goBack();
     }
 
     return (
         <View style={styles.container}>
-            <ExpenseForm />
-            <View style={styles.buttonsContainer}>
-                <Button style={styles.button} mode="flat" onPress={cancelHandler}>Cancel</Button>
-                <Button style={styles.button} onPress={confirmHandler}>{isEditing ? 'Update' : 'Add'}</Button>
-            </View>
+            <ExpenseForm
+                submitButtonLabel={isEditing ? 'Update' : 'Add'}
+                onSubmit={confirmHandler}
+                onCancel={cancelHandler}
+            />
             {isEditing && (
                 <View style={styles.deleteContainer}>
-                    <IconButton icon="trash" color={GlobalStyles.colors.error50} size={36} onPress={deleteExpenseHandler} />
+                    <IconButton
+                        icon="trash"
+                        color={GlobalStyles.colors.error500}
+                        size={36}
+                        onPress={deleteExpenseHandler}
+                    />
                 </View>
             )}
-        </View>)
+        </View>
+    );
 }
 
 export default ManageExpense;
@@ -57,22 +64,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 24,
-        backgroundColor: GlobalStyles.colors.primary800
-    },
-    buttonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    button: {
-        minWidth: 120,
-        marginHorizontal: 8
+        backgroundColor: GlobalStyles.colors.primary800,
     },
     deleteContainer: {
         marginTop: 16,
         paddingTop: 8,
         borderTopWidth: 2,
         borderTopColor: GlobalStyles.colors.primary200,
-        alignItems: 'center'
-    }
-})
+        alignItems: 'center',
+    },
+});
