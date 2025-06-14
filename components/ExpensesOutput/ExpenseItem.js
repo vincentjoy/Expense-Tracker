@@ -14,7 +14,7 @@ function ExpenseItem({ id, description, amount, date }) {
     }
 
     return (
-        <Pressable onPress={expensePressHandler} android_ripple={{color: '#ccc'}} style={({pressed}) => pressed && styles.pressed}>
+        <Pressable onPress={expensePressHandler} android_ripple={{ color: '#ccc' }} style={({ pressed }) => pressed && styles.pressed}>
             <View style={styles.expenseItem}>
                 <View>
                     <Text style={[styles.textBase, styles.description]}>{description}</Text>
