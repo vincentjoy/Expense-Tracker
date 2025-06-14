@@ -1,8 +1,8 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-import { Colors } from '../../constants/styles';
+import { GlobalStyles } from '../../constants/styles';
 
-function Input({
+function AuthInput({
   label,
   keyboardType,
   secure,
@@ -39,16 +39,16 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   labelInvalid: {
-    color: Colors.error500,
+    color: GlobalStyles.authColors.error500,
   },
   input: {
     paddingVertical: 8,
     paddingHorizontal: 6,
-    backgroundColor: Colors.primary100,
+    backgroundColor: GlobalStyles.authColors.primary100,
     borderRadius: 4,
     fontSize: 16,
   },
   inputInvalid: {
-    backgroundColor: Colors.error100,
+    backgroundColor: GlobalStyles.authColors.error100,
   },
 });

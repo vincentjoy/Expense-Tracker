@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Button from '../ui/Button';
-import Input from './Input';
+import AuthButton from '../UI/auth/AuthButton';
+import AuthInput from './AuthInput';
 
 function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -46,7 +46,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
   return (
     <View style={styles.form}>
       <View>
-        <Input
+        <AuthInput
           label="Email Address"
           onUpdateValue={updateInputValueHandler.bind(this, 'email')}
           value={enteredEmail}
@@ -54,7 +54,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
           isInvalid={emailIsInvalid}
         />
         {!isLogin && (
-          <Input
+          <AuthInput
             label="Confirm Email Address"
             onUpdateValue={updateInputValueHandler.bind(this, 'confirmEmail')}
             value={enteredConfirmEmail}
@@ -62,7 +62,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
             isInvalid={emailsDontMatch}
           />
         )}
-        <Input
+        <AuthInput
           label="Password"
           onUpdateValue={updateInputValueHandler.bind(this, 'password')}
           secure
@@ -70,7 +70,7 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
           isInvalid={passwordIsInvalid}
         />
         {!isLogin && (
-          <Input
+          <AuthInput
             label="Confirm Password"
             onUpdateValue={updateInputValueHandler.bind(
               this,
@@ -82,9 +82,9 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }) {
           />
         )}
         <View style={styles.buttons}>
-          <Button onPress={submitHandler}>
+          <AuthButton onPress={submitHandler}>
             {isLogin ? 'Log In' : 'Sign Up'}
-          </Button>
+          </AuthButton>
         </View>
       </View>
     </View>

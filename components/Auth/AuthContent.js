@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
-import { Colors } from '../../constants/styles';
+import { GlobalStyles } from '../../constants/styles';
 
 function AuthContent({ isLogin, onAuthenticate }) {
   const navigation = useNavigation();
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 32,
     padding: 16,
     borderRadius: 8,
-    backgroundColor: Colors.primary800,
+    backgroundColor: GlobalStyles.authColors.primary800,
     elevation: 2,
     shadowColor: 'black',
     shadowOffset: { width: 1, height: 1 },
