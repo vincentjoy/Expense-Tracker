@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-const BACKEND_URL = process.env.REACT_APP_FIREBASE_BASE_URL
+const BACKEND_URL = Constants.expoConfig.extra.API_URL;
 
 export async function storeExpense(expenseData) {
     const response = await axios.post(BACKEND_URL + '/expenses.json', expenseData)
@@ -9,8 +10,8 @@ export async function storeExpense(expenseData) {
 }
 
 export async function fetchExpenses() {
-    const response = await axios.get(BACKEND_URL + '/expenses.json');
 
+    const response = await axios.get(BACKEND_URL + '/expenses.json');
     const expenses = [];
 
     for (const key in response.data) {
@@ -27,9 +28,9 @@ export async function fetchExpenses() {
 }
 
 export function updateExpense(id, expenseData) {
-  return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+    return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
 }
 
 export function deleteExpense(id) {
-  return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
+    return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
 }
