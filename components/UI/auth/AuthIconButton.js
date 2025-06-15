@@ -12,7 +12,7 @@ function AuthIconButton({ icon, color, size, onPress }) {
   );
 }
 
-export default IconButton;
+export default AuthIconButton;
 
 const styles = StyleSheet.create({
   button: {

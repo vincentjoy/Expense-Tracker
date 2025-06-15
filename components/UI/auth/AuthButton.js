@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@constants/styles';
 
 function AuthButton({ children, onPress }) {
   return (
@@ -15,7 +15,7 @@ function AuthButton({ children, onPress }) {
   );
 }
 
-export default Button;
+export default AuthButton;
 
 const styles = StyleSheet.create({
   button: {

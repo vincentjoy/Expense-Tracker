@@ -1,6 +1,6 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-import { GlobalStyles } from '../../constants/styles';
+import { GlobalStyles } from '@constants/styles';
 
 function AuthInput({
   label,
@@ -27,7 +27,7 @@ function AuthInput({
   );
 }
 
-export default Input;
+export default AuthInput;
 
 const styles = StyleSheet.create({
   inputContainer: {

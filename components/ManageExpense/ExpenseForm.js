@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import Input from './Input';
 import Button from '../UI/expenses/Button';
-import { getFormattedDate } from '../../util/date';
-import { GlobalStyles } from '../../constants/styles';
+import { getFormattedDate } from '@util/date';
+import { GlobalStyles } from '@constants/styles';
 
 function ExpenseForm({ submitButtonLabel, onCancel, onSubmit, defaultValues }) {
     const [inputs, setInputs] = useState({

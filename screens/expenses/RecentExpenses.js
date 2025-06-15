@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import ExpensesOutput from "../../components/ExpensesOutput/ExpensesOutput";
-import { ExpensesContext } from "../../store/expenses-context";
-import { getDateMinusDays } from "../../util/date";
-import { fetchExpenses } from '../../util/http';
-import LoadingOverlay from "../../components/UI/expenses/LoadingOverlay";
+import ExpensesOutput from "@components/ExpensesOutput/ExpensesOutput";
+import { ExpensesContext } from "@store/expenses-context";
+import { getDateMinusDays } from "@util/date";
+import { fetchExpenses } from '@util/http';
+import LoadingOverlay from "@components/UI/expenses/LoadingOverlay";
 
 function RecentExpenses() {
     const [isFetching, setIsFetching] = useState(true)
