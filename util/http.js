@@ -3,15 +3,15 @@ import Constants from 'expo-constants';
 
 const BACKEND_URL = Constants.expoConfig.extra.API_URL;
 
-export async function storeExpense(expenseData) {
-    const response = await axios.post(BACKEND_URL + '/expenses.json', expenseData)
+export async function storeExpense(expenseData, token) {
+    const response = await axios.post(BACKEND_URL + '/expenses.json?auth=' + token, expenseData)
     const id = response.data.name
     return id
 }
 
-export async function fetchExpenses() {
+export async function fetchExpenses(token) {
 
-    const response = await axios.get(BACKEND_URL + '/expenses.json');
+    const response = await axios.get(BACKEND_URL + '/expenses.json?auth=' + token);
     const expenses = [];
 
     for (const key in response.data) {
@@ -27,10 +27,10 @@ export async function fetchExpenses() {
     return expenses;
 }
 
-export function updateExpense(id, expenseData) {
-    return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+export function updateExpense(id, token, expenseData) {
+    return axios.put(BACKEND_URL + `/expenses/${id}.json?auth=${token}`, expenseData);
 }
 
-export function deleteExpense(id) {
-    return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
+export function deleteExpense(id, token) {
+    return axios.delete(BACKEND_URL + `/expenses/${id}.json?auth=${token}`);
 }
