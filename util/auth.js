@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-const API_KEY = process.env.API_KEY
+const API_KEY = Constants.expoConfig.extra.API_KEY
 
 async function authenticate(mode, email, password) {
   const url = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${API_KEY}`;

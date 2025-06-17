@@ -4,6 +4,7 @@ import { ExpensesContext } from "@store/expenses-context";
 import { getDateMinusDays } from "@util/date";
 import { fetchExpenses } from '@util/http';
 import LoadingOverlay from "@components/UI/expenses/LoadingOverlay";
+import ErrorOverlay from "@components/UI/expenses/ErrorOverlay";
 
 function RecentExpenses() {
     const [isFetching, setIsFetching] = useState(true)
